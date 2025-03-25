@@ -2,6 +2,7 @@ package com.pdfreader.Pdf_Reader.controller;
 
 import com.pdfreader.Pdf_Reader.model.PdfReader;
 import com.pdfreader.Pdf_Reader.service.PdfService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +17,9 @@ public class PdfController {
         this.pdfService = pdfService;
     }
 
-    public PdfReader parsePdf(@RequestParam("file")MultipartFile file)  {
+    @PostMapping
+    public PdfReader parsePdf(@RequestParam("file")MultipartFile file) throws Exception {
 
-        return pdfService.parsePdf();
+        return pdfService.parsePdf(file);
     }
 }
